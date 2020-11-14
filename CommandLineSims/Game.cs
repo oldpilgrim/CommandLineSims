@@ -8,10 +8,10 @@ namespace CommandLineSims
         public void Run()
         {
             SoundManager.PlayNeighbourhood();
-            while (true)
-            {
-                // TODO
-            }
+            GameManager.Loop();
+
+            // TODO
+            string command = Console.ReadLine();
         }
     }
 }
