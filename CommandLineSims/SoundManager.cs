@@ -61,11 +61,13 @@ namespace CommandLineSims
             
             try
             {
+                // when await is encountered, execution is yielded to the caller.
+                // See https://docs.microsoft.com/en-us/dotnet/standard/async-in-depth#deeper-dive-into-task-and-taskt-for-a-cpu-bound-operation
                 await playTask;
             }
             catch (TaskCanceledException e)
             {
-                DebugLog("Play task cancelled");
+                Debug.Log("Play task cancelled");
                 return;
             }
 
@@ -82,10 +84,10 @@ namespace CommandLineSims
         {
             int trackNum = _random.Next(0, playlist.Count);
             string location = Path + playlist[trackNum];
-            DebugLog($"Playing track {trackNum} from playlist {nameof(playlist)}");
+            Debug.Log($"Playing track {trackNum} from playlist {nameof(playlist)}");
             Instance._musicPlayer.SoundLocation = location;
             Instance._musicPlayer.PlaySync();
-            DebugLog("Finished playing track");
+            Debug.Log("Finished playing track");
         }
     }
 }

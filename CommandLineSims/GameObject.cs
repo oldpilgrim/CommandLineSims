@@ -6,10 +6,10 @@
     }
     
     /// <summary>
-    /// Game objects are updated on a fixed interval 
+    /// Game objects are updated every frame
     /// </summary>
     
-    public class GameObject : IUpdateable
+    public abstract class GameObject : IUpdateable
     {
         // TODO
         public bool markToRemove = false;
@@ -18,10 +18,7 @@
         {
             GameManager.Add(this);
         }
-        
-        public virtual void Update()
-        {
-            
-        }
+
+        public abstract void Update();
     }
 }
