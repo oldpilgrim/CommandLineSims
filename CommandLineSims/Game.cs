@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Media;
 
 namespace CommandLineSims
 {
@@ -9,9 +8,9 @@ namespace CommandLineSims
         {
             SoundManager.PlayNeighbourhood();
             GameManager.Loop();
-
-            // TODO
-            string command = Console.ReadLine();
+            
+            // has to be done last as is a blocking call
+            CommandParser.BeginParse();
         }
         
         /// <summary>
