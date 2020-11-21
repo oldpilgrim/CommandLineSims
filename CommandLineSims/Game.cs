@@ -4,8 +4,11 @@ namespace CommandLineSims
 {
     public class Game
     {
+        public static readonly string WelcomeMessage = "Welcome to CommandLineSims. Enter commands after the $ symbol:";
+        
         public void Run()
         {
+            PrintLn(WelcomeMessage);
             SoundManager.PlayNeighbourhood();
             GameManager.Loop();
             
@@ -14,7 +17,7 @@ namespace CommandLineSims
         }
         
         /// <summary>
-        /// Prints a message above the current input line.
+        /// Prints a message above the current input line, in a different colour.
         /// </summary>
 
         public static void PrintLn(string message)
@@ -29,7 +32,9 @@ namespace CommandLineSims
             int storedCursorLeft = Console.CursorLeft;
             Console.MoveBufferArea(0, Console.CursorTop, Console.BufferWidth, 1, 0, Console.CursorTop + 1);
             Console.CursorLeft = 0;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.CursorLeft = storedCursorLeft;
         }
     }

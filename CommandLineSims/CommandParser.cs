@@ -4,10 +4,15 @@ namespace CommandLineSims
 {
     public class CommandParser
     {
+        private static readonly string Help = "Welcome to CommandLineSims. List of possible commands:\n\n" +
+                                              "== Neighbourhood Mode ==\n\n" +
+                                              "";
+        
         public static void BeginParse()
         {
             while (true)
             {
+                Console.Write("$ ");
                 _Parse(Console.ReadLine());
             }
         }
@@ -17,10 +22,10 @@ namespace CommandLineSims
             switch (command.ToLower())
             {
                 case "help":
-                    Console.WriteLine("Welcome to CommandLineSims. Blah blah blah TODO");
+                    Game.PrintLn(Help);
                     break;
                 default:
-                    Console.WriteLine($"'{command}' is not a recognised command. Enter 'help' for more.");
+                    Game.PrintLn($"'{command}' is not a recognised command. Enter 'help' for more.");
                     break;
             }
         }

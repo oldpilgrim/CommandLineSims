@@ -23,7 +23,9 @@ namespace CommandLineSims
         {
             if (Level <= LogLevel.Warn)
             {
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"[WARN] {message}");
+                Console.ForegroundColor = ConsoleColor.Gray;
             }
         }
         
@@ -31,7 +33,9 @@ namespace CommandLineSims
         {
             if (Level <= LogLevel.Error)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"[ERROR] {message}");
+                Console.ForegroundColor = ConsoleColor.Gray;
             }
         }
     }
