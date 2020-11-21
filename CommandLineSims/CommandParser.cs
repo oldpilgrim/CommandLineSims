@@ -1,21 +1,12 @@
 ﻿using System;
+using System.IO;
 using CommandLineSims.NeighbourMode;
 
 namespace CommandLineSims
 {
     public class CommandParser
     {
-        private static readonly string Help = "Welcome to CommandLineSims. List of possible commands:\n\n" +
-                                              "== Neighbourhood Mode ==\n\n" +
-                                              "- new family [family name]\n" +
-                                              "- new plot [plot name] [plot size]\n" +
-                                              "- move [family name] [plot name]\n" +
-                                              "- play [plot name]\n" +
-                                              "- info family [family name]\n" +
-                                              "- info plot [plot name]\n" +
-                                              "- list [family/plot]\n" +
-                                              "\n" +
-                                              "== Live Mode ==\n\n";
+        private static readonly string HelpPath = "../../../../README.txt";
 
         public static void BeginParse()
         {
@@ -30,7 +21,8 @@ namespace CommandLineSims
         {
             if (command.ToLower().Equals("help"))
             {
-                Game.PrintLn(Help);
+                string help = File.ReadAllText(HelpPath);
+                Game.PrintLn(help);
                 return;
             }
 
