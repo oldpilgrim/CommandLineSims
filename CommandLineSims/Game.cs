@@ -2,16 +2,26 @@
 
 namespace CommandLineSims
 {
+    public enum Mode
+    {
+        Neighbour, Live, Buy, Build
+    }
+    
     public class Game
     {
         public static readonly string WelcomeMessage = "Welcome to CommandLineSims. Enter commands after the $ symbol:";
+        public static Mode currentMode { get; private set; }
         
         public void Run()
         {
             PrintLn(WelcomeMessage);
             SoundManager.PlayNeighbourhood();
             GameManager.Loop();
-            
+
+            currentMode = Mode.Neighbour;
+            // it's not the scene manager's job to determine what mode we are in.
+            SceneManager.LoadNeighbourhood();
+
             // has to be done last as is a blocking call
             CommandParser.BeginParse();
         }
